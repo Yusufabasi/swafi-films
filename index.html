@@ -38,6 +38,11 @@
         }
         
         /* ===== SPLASH SCREEN ===== */
+        #splashScreen {
+            --gold: #d4af37;
+            --gold-light: #f4d467;
+            --royal-blue: #4169e1;
+        }
         .splash-screen {
             position: fixed;
             top: 0;
@@ -164,7 +169,27 @@
             from { opacity: 0; width: 0; }
             to { opacity: 1; width: 80px; }
         }
-        
+        .splash-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.3;    /* adjust this — lower = more subtle, higher = more visible */
+        }
+        @media (max-width: 768px) {
+            .splash-video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+             object-position: center center;
+            }
+        }
         /* Splash Center */
         .splash-center {
             position: relative;
@@ -2260,6 +2285,9 @@
     <!-- ===== SPLASH SCREEN ===== -->
     <div class="splash-screen" id="splashScreen">
         <div class="splash-bg"></div>
+           <video class="splash-video" autoplay muted loop playsinline>
+            <source src="images\Splash bg.mp4" type="video/mp4">
+           </video>
         
         <!-- Header -->
         <div class="splash-header">
@@ -2416,12 +2444,12 @@
 
         <!-- ABOUT -->
         <section class="about" id="about">
-            <div class="about-content word-reveal">
+            <div class="about-content">
                 <h2 class="section-title fade-up">About Swafi Films</h2>
                 <div class="line-reveal"></div>
                     <p id="aboutText1" class="fade-up">Swafi Films Ltd is a registered Kenyan production company with over a decade of experience creating television content that resonates with carefully targeted audiences.</p>
                     <p class="fade-up">We specialize in high-quality TV programming, event curation, personal and company branding, social media strategy, sponsorship, marketing, and talent development. Our seasoned team crafts compelling stories and media experiences that connect audiences, elevate brands, and drive measurable engagement and growth.</p>
-                
+            </div>
                 <div class="stats fade-up">
                     <div class="stat-item">
                         <div class="stat-icon">🎬</div>
@@ -2444,7 +2472,7 @@
                         <div class="stat-label">Awards</div>
                     </div>
                 </div>
-            </div>
+        
         </section>
         <!-- OUR TEAM -->
         <section class="team" id="team">
@@ -2484,7 +2512,7 @@
                         <img src="images\team\Abu.jpeg" alt="Team Member">
                     </div>
                     <div class="team-info">
-                        <h3>Abraham</h3>
+                        <h3>Abraham Muliro</h3>
                         <p>Head of Branding & Digital</p>
                     </div>
                 </div>
@@ -2503,7 +2531,7 @@
                     </div>
                     <div class="team-info">
                         <h3>Sonika Patel</h3>
-                        <p>Production</p>
+                        <p>Influencer</p>
                     </div>
                 </div>
                 <div class="team-card">
@@ -2515,6 +2543,16 @@
                         <p>Head of Production</p>
                     </div>
                 </div>
+                <div class="team-card">
+                    <div class="team-img">
+                    <img src="images\team\Nick Mburu.jpeg" alt="Team Member">
+                    </div>
+                    <div class="team-info">
+                    <h3>Nick Mburu</h3>
+                    <p>Marketing Excecutive</p>
+                    </div>
+                </div>
+
                 <div class="team-card">
                     <div class="team-img">
                     <img src="images\team\Faith.jpeg" alt="Team Member">
@@ -2536,11 +2574,11 @@
                 </div>
                 <div class="team-card">
                     <div class="team-img">
-                    <img src="images\team\Abu.jpeg" alt="Team Member">
+                    <img src="images\team\Ken Okoye.jpeg" alt="Team Member">
                     </div>
                     <div class="team-info">
-                    <h3>Brian Ogalo</h3>
-                    <p>Head of Marketing</p>
+                    <h3>Ken Okoye</h3>
+                    <p>Producer</p>
                     </div> 
                 </div>
                 <div class="team-card">
@@ -2549,7 +2587,7 @@
                     </div>
                     <div class="team-info">
                     <h3>Bullet Stunnerz</h3>
-                    <p>Senior Producer</p>
+                    <p>Producer</p>
                     </div>
                 </div>
                 <div class="team-card">
@@ -2558,7 +2596,7 @@
                     </div>
                     <div class="team-info">
                     <h3>Hudson Njuguna</h3>
-                    <p>Camera Guru</p>
+                    <p>Photography</p>
                     </div>
                 </div>
 
@@ -3101,25 +3139,43 @@ Swafi Films is a production company that can confidently stand on an internation
                 partnersTrack.appendChild(clone);
             });
         }
-        // ===== WORD REVEAL ANIMATION =====
-function buildWordReveal(elementId, text, startDelay) {
-    const el = document.getElementById(elementId);
-    if (!el) return;
-    const words = text.split(' ');
-    el.innerHTML = words.map((word, i) => 
-        `<span class="word" style="animation-delay: ${startDelay + i * 0.07}s">${word}&nbsp;</span>`
-    ).join('');
-}
+        //about section word reveal
+        function buildWordReveal(elementId, text) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            const words = text.split(' ');
+            el.innerHTML = words.map(word =>
+                `<span class="word" style="opacity:0; display:inline-block; transform:translateY(20px); filter:blur(4px); transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease; margin-right: 5px;">${word}</span>`
+            ).join('');
+        }
 
-buildWordReveal('aboutText1', 
-    'Swafi Films Ltd is a registered Kenyan production company with over a decade of experience creating television content that resonates with carefully targeted audiences.',
-    0.3
-);
+        buildWordReveal('aboutText1',
+            'Swafi Films Ltd is a registered Kenyan production company with over a decade of experience creating television content that resonates with carefully targeted audiences.'
+        );
 
-buildWordReveal('aboutText2',
-    'We specialize in high-quality TV programming, event curation, personal and company branding, social media strategy, sponsorship, marketing, and talent development. Our seasoned team crafts compelling stories and media experiences that connect audiences, elevate brands, and drive measurable engagement and growth.',
-    1.5
-);
+        buildWordReveal('aboutText2',
+            'We specialize in high-quality TV programming, event curation, personal and company branding, social media strategy, sponsorship, marketing, and talent development. Our seasoned team crafts compelling stories and media experiences that connect audiences, elevate brands, and drive measurable engagement and growth.'
+        );
+
+        // Trigger when section comes into view
+        const aboutObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const words = entry.target.querySelectorAll('.word');
+                    words.forEach((word, i) => {
+                        setTimeout(() => {
+                            word.style.opacity = '1';
+                            word.style.transform = 'translateY(0)';
+                            word.style.filter = 'blur(0)';
+                        }, i * 60);
+                    });
+                    aboutObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        const aboutSection = document.getElementById('about');
+        if (aboutSection) aboutObserver.observe(aboutSection);
     </script>
 </body>
 </html>
