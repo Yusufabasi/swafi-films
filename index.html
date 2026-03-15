@@ -620,7 +620,7 @@
         }
         
         .nav-links a {
-            color: var(--royal-blue);
+            color: #4169e1;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
@@ -635,11 +635,11 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--gold);
+            background: #d4af37;
             transition: width 0.3s ease;
         }
         
-        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover { color: #d4af37; }
         .nav-links a:hover::after { width: 100%; }
         
         .menu-toggle {
@@ -1194,6 +1194,27 @@
         
         .line-reveal.visible {
             width: 100px;
+        }
+        
+        /* Word-by-word reveal */
+        .word-reveal p {
+            opacity: 1;
+        }
+
+        .word-reveal .word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(4px);
+            animation: wordUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        @keyframes wordUp {
+            to {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+            }
         }
 
         /* ===== OUR TEAM ===== */
@@ -2315,7 +2336,7 @@
         <nav id="navbar">
             <div class="logo" id="mainLogo">
                 <!-- CUSTOM LOGO: Replace src with your logo -->
-                <img src="images\Untitled design (6).png" alt="Swafi Films" class="logo-image">
+                <img src="images\final logo.jpeg" alt="Swafi Films" class="logo-image">
                 <!-- <span class="logo-text">SWAFI FILMS</span> -->
             </div>
             <ul class="nav-links" id="navLinks">
@@ -2364,8 +2385,8 @@
                     <div class="slide">
                         <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1920&h=1080&fit=crop');"></div>
                         <div class="slide-content">
-                            <span class="slide-tag">Music Videos</span>
-                            <h1 class="slide-title">Amplify Your Sound<br>With Stunning Visuals</h1>
+                            <span class="slide-tag">Social Media Branding</span>
+                            <h1 class="slide-title">Amplify Your Brand<br>With Stunning Visuals</h1>
                             <p class="slide-description">Creating music videos that define generations and capture the raw energy of artistic expression.</p>
                             <div class="slide-cta">
                                 <a href="#portfolio" class="btn btn-primary">Watch Videos</a>
@@ -2395,12 +2416,11 @@
 
         <!-- ABOUT -->
         <section class="about" id="about">
-            <div class="about-content">
+            <div class="about-content word-reveal">
                 <h2 class="section-title fade-up">About Swafi Films</h2>
                 <div class="line-reveal"></div>
-                <p class="fade-up">SWAFI FILMS LTD IS A REGISTERED KENYAN PRODUCTION COMPANY WITH OVER A DECADE OF EXPERIENCE CREATING TELEVISION CONTENT THAT RESONATES WITH CAREFULLY TARGETED AUDIENCES.
-                     WE SPECIALIZE IN HIGH-QUALITY TV PROGRAMMING, EVENT CURATION, PERSONAL AND COMPANY BRANDING, SOCIAL MEDIA STRATEGY, SPONSORSHIP, MARKETING, AND TALENT DEVELOPMENT.
-                      OUR SEASONED TEAM CRAFTS COMPELLING STORIES AND MEDIA EXPERIENCES THAT CONNECT AUDIENCES, ELEVATE BRANDS, AND DRIVE MEASURABLE ENGAGEMENT AND GROWTH.</p>
+                    <p id="aboutText1" class="fade-up">Swafi Films Ltd is a registered Kenyan production company with over a decade of experience creating television content that resonates with carefully targeted audiences.</p>
+                    <p class="fade-up">We specialize in high-quality TV programming, event curation, personal and company branding, social media strategy, sponsorship, marketing, and talent development. Our seasoned team crafts compelling stories and media experiences that connect audiences, elevate brands, and drive measurable engagement and growth.</p>
                 
                 <div class="stats fade-up">
                     <div class="stat-item">
@@ -2501,7 +2521,7 @@
                     </div>
                     <div class="team-info">
                     <h3>Faith Kamau</h3>
-                    <p>Branding Advisor</p>
+                    <p>Sales Manager</p>
                     </div>
                 </div>
 
@@ -2703,9 +2723,13 @@
             <div class="testimonial-slider fade-up">
                 <div class="testimonial-item">
                     <div class="quote-icon">❝</div>
-                    <p class="testimonial-text">"Swafi Films transformed our vision into something beyond imagination. Their attention to detail is unmatched in East Africa."</p>
-                    <p class="testimonial-author">Sarah Wanjiku</p>
-                    <p class="testimonial-role">Marketing Director, TechStartup Kenya</p>
+                    <p class="testimonial-text">"“Working around the Hollywood production environment, you get used to very high standards when it comes to storytelling, camera work, and editing.
+
+When I first saw the work coming out of Swafi Films in Nairobi, I’ll be honest  I didn’t expect this level of production quality. <br>The attention to visual storytelling, the composition of shots, and the editing discipline really stood out to me.<br>
+What impressed me most is that they’re not just creating content  they’re telling stories with intention and professionalism.<br>
+Swafi Films is a production company that can confidently stand on an international stage. If they keep pushing at this level, they’re definitely a team people should pay attention to."</p>
+                    <p class="testimonial-author">Daniel Ndlara</p>
+                    <p class="testimonial-role">Hollywood Filmmaker and Producer</p>
                 </div>
             </div>
         </section>
@@ -2728,21 +2752,22 @@
                         <div class="contact-icon">📞</div>
                         <div class="contact-details">
                             <h3>Phone</h3>
-                            <p>0706 713151</p>
+                            <p>0722815534</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">🕘</div>
                         <div class="contact-details">
                             <h3>Hours</h3>
-                            <p>Mon – Fri: 8AM – 6PM</p>
+                            <p>Mon – Fri: 8AM – 5PM</p>
+                            <p>Sat – 8AM – 12PM</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">✉️</div>
                         <div class="contact-details">
                             <h3>Email</h3>
-                            <p>hello@swafifilms.com</p>
+                            <p>swafifilms.com</p>
                         </div>
                     </div>
                 </div>
@@ -2750,14 +2775,14 @@
                 
             </div>
                 <div style="text-align:center; margin-top: 3rem;">
-                    <a href="mailto:hello@swafifilms.co.ke" class="btn btn-primary">Email Us</a>
+                    <a href="mailto:swafifilms.com" class="btn btn-primary">Email Us</a>
                     &nbsp;&nbsp;
                     <a href="tel:+254706713151" class="btn btn-secondary">Call Us</a>
                 </div>
             
             <div class="map-container fade-up">
                 <iframe
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8162350793277!2d36.82112767399211!3d-1.2841699356217535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d61343dfd3%3A0x3c24191acc1535d3!2sOld%20Mutual%20Building%2C%20Kimathi%20St%2C%20Starehe!5e0!3m2!1sen!2ske!4v1773159801900!5m2!1sen!2ske"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8162350793277!2d36.82112767399211!3d-1.2841699356217535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d61343dfd3%3A0x3c24191acc1535d3!2sOld%20Mutual%20Building%2C%20Kimathi%20St%2C%20Starehe!5e0!3m2!1sen!2ske!4v1773159801900!5m2!1sen!2ske"
                     width="100%"
                     height="100%"
                     style="border:0; filter: invert(90%) hue-rotate(180deg);"
@@ -3076,6 +3101,25 @@
                 partnersTrack.appendChild(clone);
             });
         }
+        // ===== WORD REVEAL ANIMATION =====
+function buildWordReveal(elementId, text, startDelay) {
+    const el = document.getElementById(elementId);
+    if (!el) return;
+    const words = text.split(' ');
+    el.innerHTML = words.map((word, i) => 
+        `<span class="word" style="animation-delay: ${startDelay + i * 0.07}s">${word}&nbsp;</span>`
+    ).join('');
+}
+
+buildWordReveal('aboutText1', 
+    'Swafi Films Ltd is a registered Kenyan production company with over a decade of experience creating television content that resonates with carefully targeted audiences.',
+    0.3
+);
+
+buildWordReveal('aboutText2',
+    'We specialize in high-quality TV programming, event curation, personal and company branding, social media strategy, sponsorship, marketing, and talent development. Our seasoned team crafts compelling stories and media experiences that connect audiences, elevate brands, and drive measurable engagement and growth.',
+    1.5
+);
     </script>
 </body>
 </html>
